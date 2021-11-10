@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import Header from "./components/ui/Header";
+import CharacterGrid from "./components/characters/CharacterGrid";
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -9,7 +10,7 @@ const App = () => {
 
   useEffect(() => {
     const fetchItems = async () => {
-      const result = await axios(`https://breakingbadapi.com//api/characters`);
+      const result = await axios(`https://breakingbadapi.com/api/characters`);
 
       console.log(result.data);
 
@@ -23,6 +24,7 @@ const App = () => {
   return (
     <div className="container">
       <Header />
+      <CharacterGrid isLoading={isLoading} items={items} />
     </div>
   );
 };
